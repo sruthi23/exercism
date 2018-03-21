@@ -8,13 +8,13 @@ bool is_isogram(const char phrase[]){
 	for(int i=0;i<l;i++){
 
 		for(int j=i+1;j<l;j++){
-
-			if(toupper(phrase[i])==toupper(phrase[j]))
-			{
-				return false;
+			if(isalpha(phrase[i])&&isalpha(phrase[j]))
+				if(toupper(phrase[i])==toupper(phrase[j]))
+				{
+					return false;
+				}
 			}
 		}
-	}
 
-	return true;
-}
+		return true;
+	}
