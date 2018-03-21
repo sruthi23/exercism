@@ -1,5 +1,6 @@
 #include "isogram.h"
 #include <string.h>
+#include <ctype.h>
 
 bool is_isogram(const char phrase[]){
 
@@ -8,7 +9,7 @@ bool is_isogram(const char phrase[]){
 
 		for(int j=i+1;j<l;j++){
 
-			if(phrase[i]==phrase[j])
+			if(toupper(phrase[i])==toupper(phrase[j]))
 			{
 				return false;
 			}
