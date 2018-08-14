@@ -1,11 +1,26 @@
 defmodule Bob do
   def hey(input) do
     cond do
-    String.ends_with?(input,[".","!"]) and String.upcase(input) != input ->
-     "Whatever."
-     String.trim(input) == "" -> "Fine. Be that way!"
-     String.ends_with?(input,"!") or String.upcase(input) == input -> "Whoa, chill out!"
-     String.match?(input, ~r/\d\?/)->"hhhh"
+    questions?(input)-> "Sure."
+     silence?(input)-> "Fine. Be that way!"
+     yelling?(input)-> "Calm down, I know what I'm doing!"
+    String.match?(input, ~r/\d$/)->"Whatever."
+     shouting?(input)-> "Whoa, chill out!"
+     true -> "Whatever."
     end
-  end
+    end
+
+    defp questions?(input) do
+      (input != String.upcase(input) && String.ends_with?(input,"?"))||
+      (String.ends_with?(input,"?") && String.match?(input, ~r/[0-9]/) )
+    end
+    defp silence?(input) do
+      String.trim(input) == ""
+    end
+    defp shouting?(input) do
+    input == String.upcase(input)
+    end
+    defp yelling?(input) do
+            input == String.upcase(input) && String.ends_with?(input,"?")
+    end
 end
