@@ -9,6 +9,11 @@ defmodule Words do
     words = String.replace(sentence,~r/[!:,&@$%^&_]/," ")
     words = String.downcase(words)
      words = String.split(words)
-     words|> Enum.reduce(%{}, fn x, acc -> Map.update(acc, x, 1, &(&1 +1)) end)
+     |>Enum.reduce(%{},wordCount(words))
   end
+
+  def wordCount(words)do
+    fn x,acc -> Map.update(acc,x,1, &(&1 +1))end
+  end
+
 end
