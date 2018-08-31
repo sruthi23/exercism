@@ -10,11 +10,12 @@ defmodule Words do
      |> String.replace(~r/[!:,&@$%^&_]/," ")
      |> String.downcase()
      |> String.split()
-     |>Enum.reduce(%{},wordCount())
+     #|>Enum.reduce(%{},wordCount())
+     |>Enum.reduce(%{},&(Map.update(&2,&1,1,fn(x)->x+1 end)))
   end
 
-  def wordCount()do
-    fn x,acc -> Map.update(acc,x,1, &(&1 +1))end
-  end
+  # def wordCount()do
+  #   fn x,acc -> Map.update(acc,x,1, &(&1 +1))end
+  # end
 
 end
