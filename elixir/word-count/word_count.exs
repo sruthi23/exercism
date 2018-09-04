@@ -11,7 +11,6 @@ defmodule Words do
      |> String.downcase()
      |> String.split()
      |>Enum.reduce(%{},&wordCount/2)
-     #|>Enum.reduce(%{},&(Map.update(&2,&1,1,fn(x)->x+1 end)))
   end
 
   def wordCount(x, acc)do
