@@ -1,5 +1,8 @@
 defmodule RNATranscription do
-@rna_map %{71 => 67, 67 => 71,84 => 65, 65 => 85}
+@rna_map %{?G => ?C,
+    ?C => ?G,
+    ?T => ?A,
+    ?A => ?U}
 
   def to_rna(dna) do
     dna |>Enum.map(&get_rna/1)
